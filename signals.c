@@ -5,14 +5,18 @@
 
 static void sighandler(int signo){
     if (signo == SIGINT){//keyboard interrupt
-        printf("I've been interrupted, how rude!\n");
+        printf("I've been interrupted due to SIGINT, how rude!\n");
+        exit(0);
+    }
+    else if (signo == SIGUSR1){//keyboard interrupt
+        printf("SIGUSR1");
     }
 }
-int main(){
+int main(){ 
     signal(SIGINT, sighandler);//whenever the SIGNIT gets sent, RUN this function
     //yeah you're passing a function as an argument
     while (1){
-        printf("hello, I'm: %d\n", getpid());
+        printf("hello, I'm process %d\n", getpid());
         sleep(1);//causes program to sleep for 1 second so it doesn't spam hello
     }
 
