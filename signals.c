@@ -13,7 +13,9 @@ static void sighandler(int signo){
     }
 }
 int main(){ 
+    // kill(getppid(),SIGUSR1);
     signal(SIGINT, sighandler);//whenever the SIGNIT gets sent, RUN this function
+    signal(SIGUSR1, sighandler);
     //yeah you're passing a function as an argument
     while (1){
         printf("hello, I'm process %d\n", getpid());
