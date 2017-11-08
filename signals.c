@@ -9,7 +9,7 @@ static void sighandler(int signo){
         exit(0);
     }
     else if (signo == SIGUSR1){//keyboard interrupt
-        printf("SIGUSR1");
+        printf("hello, my mom is %d\n", getppid());
     }
 }
 int main(){ 
